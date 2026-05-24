@@ -1,0 +1,40 @@
+no horizontal x=x0+v0_{x}t, como x0=0, entao x=v0_{x}t
+no vertical y=y0+v0_{y}t+(at^2)/2, como y0=0 e a=-g, entao y=v0_{y}t-(gt^2)/2
+
+v0=v0_{x}i+v0_{y}j
+v0_{x}=v0cos(theta)
+v0_{y}=v0sen(theta)
+
+isso implica nas equações
+para movimento horizontal x(t)=v0cos(theta)t
+para o movimento vertical y(t)=v0sen(theta)t-(gt^2)/2
+
+agora é possível saber toda a trajetória (x(t),y(t)) avançando o tempo t
+consideraremos t0=0
+
+para sabermos a altura máxima
+v_{y}^2=v0_{y}^2+2a\delta_y, onde v_{y}^2=0, v0_{y}^2=(v0sen(theta))^2, a=-g e \delta_y=h
+temos que 0=(v0sen(theta))^2-2gh
+e então a altura máxima é h=((v0sen(theta))^2)/2g
+
+para sabermos a distância percorrida, precisamos do instante onde a particula atinge o chão
+y=v0_{y}t-(gt^2)/2
+0=v0_{y}t-(gt^2)/2
+t(v0_{y}-(gt)/2)=0 <- desconsideraremos a solução t=0, que aparece pois a partícula inicia na origem
+v0_{y}-(gt)/2=0
+(gt)/2=v0_{y}
+t=(2v0_{y})/g -> t=(2v0sen(theta))/g
+
+agora substituimos esse tempo t na equação x(t)=v0_{x}t
+e temos x_{max}=(2v0_{x}v0sen(theta))/g
+x_{max}=(2v0cos(theta)v0sen(theta))/g
+x_{max}=(2v0^2sen(theta)cos(theta))g -> x_{max}=(v0^2sen(2theta))/g
+
+##############################
+x(t)=v0cos(theta)t
+y(t)=v0sen(theta)t-(gt^2)/2
+v0_{x}=v0cos(theta)
+v0_{y}=v0sen(theta)
+h_{max}=((v0sen(theta))^2)/2g
+x_{max}=(v0^2sen(2theta))/g
+##############################
