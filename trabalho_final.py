@@ -18,9 +18,20 @@ def calcular_trajetoria(v_0, theta):
             t+=0.1
     return trajetoria
 
+"""
+def calcular_x_max():
+    return x_max
+
+def calcular_h_max():
+    return h_max
+
+def vec_velocidade():
+    return velocidade
+"""
+
 v_0=float(input("Informe a velocidade inicial: "))
 theta=float(input("Informe o ângulo de lançamento: "))
 trajetoria=calcular_trajetoria(v_0, theta)
 
-for x,y in trajetoria:
-    print(f"{x:.1f}, {y:.1f}")
+for i in trajetoria:
+    print(f"{i[0]:.1f}, {i[1]:.1f}")
