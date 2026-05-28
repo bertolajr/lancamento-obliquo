@@ -38,3 +38,5 @@ v0_{y}=v0sen(theta)
 h_{max}=((v0sen(theta))^2)/2g
 x_{max}=(v0^2sen(2theta))/g
 ##############################
+
+v_{y}=(v0sen(theta))-gt

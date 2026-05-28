@@ -28,19 +28,28 @@ def calcular_h_max(v_0, theta):
     h_max=((v_0*np.sin(np.radians(theta)))**2)/(2*g)
     return h_max
 
-"""
-def vec_velocidade():
-    return velocidade
-"""
+def calcular_vec_velocidade(v_0, theta):
+    t=0.0
+    vec_x=v_0*np.cos(np.radians(theta))
+    vec_list=[]
+    while True:
+        vec_y=(v_0*np.sin(np.radians(theta)))-(9.81*t)
+        if t>0 and vec_y<(-v_0*np.sin(np.radians(theta))):
+            break
+        else:
+            vec_list.append([vec_x, vec_y])
+            t+=0.005
+    return vec_list
 
 v_0=float(input("Informe a velocidade inicial (m/s): "))
 theta=float(input("Informe o ângulo de lançamento (⁰): "))
 trajetoria=calcular_trajetoria(v_0, theta)
+vec_velocidade=calcular_vec_velocidade(v_0, theta)
 x_max=calcular_x_max(v_0, theta)
 h_max=calcular_h_max(v_0, theta)
 
-print("[x, y]")
-for i in trajetoria:
-    print(f"[{i[0]:.1f}, {i[1]:.1f}]")
+print("[x, y] [vx, vy]")
+for i,j in zip(trajetoria, vec_velocidade):
+    print(f"[{i[0]:.1f}, {i[1]:.1f}] [{j[0]:.1f}, {j[1]:.1f}] ")
 print(f"Distância máxima: {x_max:.1f} m")
 print(f"Altura máxima: {h_max:.1f} m")
