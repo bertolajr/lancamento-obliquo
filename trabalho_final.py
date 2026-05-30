@@ -1,4 +1,5 @@
 import numpy as np
+from manim import *
 
 def calcular_posicao(t, v_0, theta):
     x=v_0*np.cos(np.radians(theta))*t
@@ -43,13 +44,24 @@ def calcular_vec_velocidade(v_0, theta):
 
 v_0=float(input("Informe a velocidade inicial (m/s): "))
 theta=float(input("Informe o ângulo de lançamento (⁰): "))
-trajetoria=calcular_trajetoria(v_0, theta)
-vec_velocidade=calcular_vec_velocidade(v_0, theta)
-x_max=calcular_x_max(v_0, theta)
-h_max=calcular_h_max(v_0, theta)
 
-print("[x, y] [vx, vy]")
-for i,j in zip(trajetoria, vec_velocidade):
-    print(f"[{i[0]:.1f}, {i[1]:.1f}] [{j[0]:.1f}, {j[1]:.1f}] ")
-print(f"Distância máxima: {x_max:.1f} m")
-print(f"Altura máxima: {h_max:.1f} m")
+class Lancamento(Scene):
+    def construct(self):
+        pontos_da_trajetoria=calcular_trajetoria(v_0, theta)
+        eixos=Axes(
+            x_range=[0,30,5],
+            y_range=[0,15,5],
+            axis_config={"include_tip":True}
+        )
+        pontos_manim=[eixos.c2p(i[0], i[1]) for i in pontos_da_trajetoria]
+
+        trajetoria=VMobject()
+        trajetoria.set_points_as_corners(pontos_manim)
+
+        projetil=Dot(color=BLUE)
+        projetil.move_to(pontos_manim[0])
+
+        self.play(Create(eixos))
+        self.play(Create(trajetoria), run_time=2)
+        self.play(MoveAlongPath(projetil, trajetoria), run_time=2, rate_func=linear)
+        self.wait(2)
